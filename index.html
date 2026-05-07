@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O SNS está preparado para o futuro?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #073d2e;
+    --verde-mid: #0f6e56;
+    --verde-vivo: #1d9e75;
+    --verde-claro: #5dcaa5;
+    --verde-palido: #e1f5ee;
+    --creme: #f7f4ef;
+    --creme-escuro: #ede9e1;
+    --texto: #1a1a18;
+    --texto-muted: #5a5a54;
+    --laranja: #d45a30;
+    --laranja-claro: #faeada;
+    --borda: rgba(0,0,0,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--creme);
+    color: var(--texto);
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--verde-escuro);
+    padding: 14px 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .site-header .brand {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--verde-claro);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .site-header .brand span { color: rgba(255,255,255,0.4); margin: 0 8px; }
+  .site-header nav { display: flex; gap: 1.5rem; }
+  .site-header nav a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .site-header nav a:hover { color: #fff; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--verde-escuro);
+    padding: 6rem 2rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -100px;
+    top: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(29,158,117,0.08);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    left: -60px;
+    bottom: -80px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(29,158,117,0.05);
+  }
+  .hero-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    font-weight: 500;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--verde-claro);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(36px, 6vw, 58px);
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.12;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--verde-claro);
+  }
+  .hero-lead {
+    font-size: 18px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--verde-vivo);
+    color: #fff;
+    padding: 13px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .hero-cta:hover { background: var(--verde-claro); transform: translateY(-1px); }
+  .hero-cta svg { width: 16px; height: 16px; }
+
+  /* ── FACTS BAND ── */
+  .facts-band {
+    background: var(--verde-mid);
+    padding: 3rem 2rem;
+  }
+  .facts-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .fact-item {
+    text-align: center;
+    padding: 1rem 2rem;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+  .fact-item:last-child { border-right: none; }
+  .fact-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .fact-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    padding: 5rem 2rem;
+    border-bottom: 1px solid var(--borda);
+  }
+  .section:last-of-type { border-bottom: none; }
+  .section-inner { max-width: 860px; margin: 0 auto; }
+
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--verde-vivo);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 400;
+    color: var(--texto);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-lead {
+    font-size: 17px;
+    color: var(--texto-muted);
+    line-height: 1.8;
+    max-width: 620px;
+    margin-bottom: 3rem;
+  }
+
+  /* ── PROBLEM CARDS ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+    margin-bottom: 2rem;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--verde-palido);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 20px;
+    color: var(--verde-mid);
+  }
+  .card h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--texto);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .card p {
+    font-size: 14px;
+    color: var(--texto-muted);
+    line-height: 1.6;
+  }
+
+  /* ── MARIA SCENARIO ── */
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 600px) { .scenario-grid { grid-template-columns: 1fr; } }
+
+  .scenario-card {
+    border-radius: 8px;
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .scenario-card.hoje {
+    background: var(--creme-escuro);
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .scenario-card.futuro {
+    background: var(--verde-escuro);
+    border: 1px solid var(--verde-mid);
+  }
+  .scenario-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+  .hoje .scenario-badge { background: var(--laranja-claro); color: #7a3010; }
+  .futuro .scenario-badge { background: rgba(29,158,117,0.2); color: var(--verde-claro); }
+  .scenario-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  .hoje h3 { color: var(--texto); }
+  .futuro h3 { color: #fff; }
+  .scenario-card p { font-size: 14px; line-height: 1.7; }
+  .hoje p { color: var(--texto-muted); }
+  .futuro p { color: rgba(255,255,255,0.7); }
+
+  /* ── STEPS ── */
+  .steps-list { display: flex; flex-direction: column; gap: 1px; }
+  .step-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: #fff;
+    border: 1px solid var(--borda);
+    transition: background .2s;
+  }
+  .step-item:first-child { border-radius: 8px 8px 0 0; }
+  .step-item:last-child { border-radius: 0 0 8px 8px; }
+  .step-item:hover { background: var(--verde-palido); }
+  .step-num {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    background: var(--verde-escuro);
+    color: var(--verde-claro);
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .step-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--texto);
+    margin-bottom: 5px;
+  }
+  .step-body { font-size: 14px; color: var(--texto-muted); line-height: 1.65; }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1px solid var(--borda); margin: 0; }
+
+  /* ── SABER MAIS ── */
+  .accordion { border: 1px solid var(--borda); border-radius: 8px; overflow: hidden; margin-bottom: 10px; }
+  .acc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: #fff;
+    cursor: pointer;
+    gap: 12px;
+    transition: background .15s;
+    border: none;
+    width: 100%;
+    text-align: left;
+  }
+  .acc-header:hover { background: var(--creme); }
+  .acc-left { display: flex; align-items: center; gap: 14px; }
+  .acc-ico {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 8px;
+    background: var(--verde-palido);
+    color: var(--verde-mid);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .acc-eyebrow {
+    font-size: 11px;
+    color: var(--verde-vivo);
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .acc-title { font-size: 15px; font-weight: 500; color: var(--texto); }
+  .acc-arrow {
+    font-size: 20px;
+    color: var(--texto-muted);
+    transition: transform .25s;
+    flex-shrink: 0;
+  }
+  .accordion.open .acc-arrow { transform: rotate(180deg); }
+  .acc-body {
+    display: none;
+    padding: 1.5rem;
+    background: var(--creme);
+    border-top: 1px solid var(--borda);
+  }
+  .accordion.open .acc-body { display: block; }
+  .acc-text {
+    font-size: 15px;
+    color: var(--texto-muted);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+  .acc-text p { margin-bottom: 0.85rem; }
+  .acc-text p:last-child { margin-bottom: 0; }
+  .acc-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+  .acc-btn {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--texto-muted);
+    cursor: pointer;
+    transition: all .15s;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .acc-btn:hover { border-color: var(--verde-vivo); color: var(--verde-mid); background: var(--verde-palido); }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: var(--verde-escuro);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .site-footer p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.8;
+  }
+  .site-footer strong { color: rgba(255,255,255,0.6); font-weight: 400; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > * {
+    animation: fadeUp .6s ease both;
+  }
+  .hero-eyebrow { animation-delay: .1s; }
+  .hero h1      { animation-delay: .2s; }
+  .hero-lead    { animation-delay: .32s; }
+  .hero-cta     { animation-delay: .44s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .facts-inner { grid-template-columns: 1fr; }
+    .fact-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding: 1.5rem 1rem; }
+    .fact-item:last-child { border-bottom: none; }
+    .site-header nav { display: none; }
+  }
+
+  /* ── PROGRESS BAR (decorativo) ── */
+  .progress-bar {
+    height: 3px;
+    background: var(--verde-claro);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    transition: width .1s linear;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="brand">Saúde em Portugal <span>|</span> Análise para o cidadão</div>
+  <nav>
+    <a href="#problema">O problema</a>
+    <a href="#mudanca">O que muda</a>
+    <a href="#saibamais">Saber mais</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Saúde &amp; Futuro · Portugal</div>
+    <h1>
+      O SNS foi feito para quem<br>
+      fica doente de repente.<br>
+      <em>E para quem fica doente para sempre?</em>
+    </h1>
+    <p class="hero-lead">
+      Cada vez mais portugueses vivem décadas com doenças crónicas. O sistema de saúde ainda não foi adaptado para os acompanhar. Esta é a história do maior desafio do SNS.
+    </p>
+    <a href="#problema" class="hero-cta">
+      Perceber o problema
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FACTS BAND -->
+<div class="facts-band">
+  <div class="facts-inner">
+    <div class="fact-item">
+      <div class="fact-num">1 em 2</div>
+      <div class="fact-desc">portugueses com mais de 65 anos tem pelo menos uma doença crónica</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-num">14 anos</div>
+      <div class="fact-desc">é quanto tempo, em média, um português vive com má saúde depois dos 65</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-num">€600</div>
+      <div class="fact-desc">gasta cada família portuguesa por ano do seu próprio bolso em saúde</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: O PROBLEMA -->
+<section class="section" id="problema">
+  <div class="section-inner">
+    <div class="section-tag">O que está a mudar</div>
+    <h2 class="section-title">Portugal está a envelhecer —<br>e a adoecer de outra forma</h2>
+    <p class="section-lead">
+      As principais causas de morte em Portugal são as doenças cardiovasculares — AVC e enfarte — responsáveis por um em cada quatro óbitos, seguidas dos tumores malignos, com cancro do pulmão, cólon e mama no topo. A estas juntam-se as doenças respiratórias crónicas, as perturbações mentais e as doenças degenerativas do sistema nervoso, como a demência. O que todas têm em comum: não se curam num hospital. Exigem acompanhamento contínuo, ao longo de anos. E o SNS ainda não foi estruturado para isso.
+    </p>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🫀</div>
+        <h3>Mais doenças ao mesmo tempo</h3>
+        <p>Doenças cardiovasculares, cancro, insuficiência respiratória crónica e demência coexistindo na mesma pessoa — é a realidade de grande parte dos portugueses com mais de 65 anos. Até 2050, um em cada três europeus vai viver nestas condições em simultâneo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <h3>Menos pessoas para cuidar</h3>
+        <p>Portugal vai ter cada vez mais idosos e cada vez menos população ativa. Quem vai cuidar de quem? O SNS ainda não tem resposta para esta equação.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏥</div>
+        <h3>O hospital já não é a solução</h3>
+        <p>Ir à urgência com uma doença crónica é o modelo errado: caro, desgastante e ineficaz para o doente. O futuro tem de passar por outro caminho.</p>
+      </div>
+    </div>
+
+    <hr class="divider" style="margin-bottom:3rem">
+
+    <div class="section-tag">O problema concreto</div>
+    <h2 class="section-title">O SNS foi desenhado para outro tipo de doente</h2>
+    <p class="section-lead">Há uma diferença enorme entre tratar alguém que partiu uma perna e acompanhar alguém que vai viver 20 anos com uma doença crónica. Conheça a Maria.</p>
+
+    <div class="scenario-grid">
+      <div class="scenario-card hoje">
+        <span class="scenario-badge">O sistema que temos</span>
+        <h3>Maria, 72 anos, tem insuficiência cardíaca, diabetes e demência inicial</h3>
+        <p>
+          Tem consultas de cardiologia, diabetologia e neurologia — em três hospitais diferentes, em dias diferentes. Quando descompensa o coração, vai à urgência. A medicação para cada doença foi prescrita por médicos que nunca se reuniram. A filha tira dias de trabalho para a acompanhar. Ninguém tem a visão completa da pessoa.
+        </p>
+      </div>
+      <div class="scenario-card futuro">
+        <span class="scenario-badge">O sistema que precisamos</span>
+        <h3>Maria, 72 anos, tem insuficiência cardíaca, diabetes e demência inicial</h3>
+        <p>
+          Um gestor de caso coordena cardiologista, endocrinologista e neurologista — e fala com o médico de família. Um sensor no pulso monitoriza o ritmo cardíaco e os níveis de glicose em tempo real. Quando os valores se alteram, o enfermeiro liga antes de haver crise. A filha não precisa de faltar ao trabalho.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: O QUE MUDA -->
+<section class="section" id="mudanca" style="background:#fff;">
+  <div class="section-inner">
+    <div class="section-tag">O que é preciso mudar</div>
+    <h2 class="section-title">Quatro mudanças que fariam diferença na sua vida</h2>
+    <p class="section-lead">Não são conceitos técnicos. São alterações práticas que outros países já estão a implementar — e que Portugal ainda não concretizou.</p>
+
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Um profissional que coordena tudo</div>
+          <div class="step-body">Quando se tem várias doenças, ninguém tem uma visão completa da pessoa. Precisamos de alguém — médico ou enfermeiro especializado — que conheça o doente como um todo e coordene todos os outros cuidados. No Reino Unido já existe. Em Portugal, ainda não.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">Cuidados em casa, não só no hospital</div>
+          <div class="step-body">A tecnologia para monitorizar diabetes, pressão arterial ou insuficiência cardíaca em casa já existe. Outros países fazem-no por rotina. Em Portugal é ainda a exceção, não a regra. Mudar isto reduziria urgências desnecessárias e pouparia dinheiro ao sistema — e às famílias.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Medicamentos perto de casa</div>
+          <div class="step-body">Deslocar-se ao hospital para levantar medicamentos crónicos é um absurdo para quem tem mobilidade reduzida. A farmácia da esquina pode e devia tratar disso. Já existem experiências em Portugal com excelentes resultados — falta a decisão política de as generalizar.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">Prevenir em vez de só tratar</div>
+          <div class="step-body">O SNS ainda destina a maior parte do seu orçamento a tratar doenças já instaladas. Investir em prevenção — alimentação saudável, exercício físico, saúde mental — é mais barato e muito mais eficaz a longo prazo. Mas exige pensar a décadas, não a legislaturas.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: SABER MAIS -->
+<section class="section" id="saibamais">
+  <div class="section-inner">
+    <div class="section-tag">Para saber mais</div>
+    <h2 class="section-title">Quer aprofundar o tema?</h2>
+    <p class="section-lead">Abra a área que mais lhe interessa para perceber melhor o que está em jogo.</p>
+
+    <!-- ACCORDION 1 -->
+    <div class="accordion" id="acc1">
+      <button class="acc-header" onclick="toggleAcc('acc1')">
+        <div class="acc-left">
+          <div class="acc-ico">🔬</div>
+          <div>
+            <div class="acc-eyebrow">Para quem quer aprofundar</div>
+            <div class="acc-title">O que dizem os especialistas internacionais</div>
+          </div>
+        </div>
+        <span class="acc-arrow">›</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-text">
+          <p>A OCDE alertou em 2024 que mais de 40% dos europeus com mais de 65 anos vivem com pelo menos duas doenças crónicas em simultâneo — e que os sistemas de saúde europeus não estão preparados para esta realidade. Em Portugal, a proporção é ainda mais elevada.</p>
+          <p>O The King's Fund e o Nuffield Trust, dois dos mais influentes think tanks de saúde do mundo, são claros: a resposta passa obrigatoriamente pela integração de cuidados — saúde, apoio social e família a trabalhar em conjunto, com a pessoa no centro. Não o hospital.</p>
+          <p>A McKinsey estima que até 25% dos cuidados prestados hoje em hospital poderiam ser feitos em casa com a mesma qualidade e a custos muito mais baixos. A tecnologia existe. O que falta é a decisão de avançar.</p>
+          <p>O PLANAPP, ao comparar o SNS português com o NHS britânico, identificou que o NHS criou novos perfis profissionais especializados em doença crónica e envelhecimento. Em Portugal, essa transformação ainda não aconteceu.</p>
+        </div>
+        <div class="acc-btns">
+          <a class="acc-btn" href="#">Como o NHS aborda isto →</a>
+          <a class="acc-btn" href="#">Exemplos noutros países →</a>
+          <a class="acc-btn" href="#">Relatório OCDE 2024 →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACCORDION 2 -->
+    <div class="accordion" id="acc2">
+      <button class="acc-header" onclick="toggleAcc('acc2')">
+        <div class="acc-left">
+          <div class="acc-ico">👨‍👩‍👧</div>
+          <div>
+            <div class="acc-eyebrow">Impacto na sua vida</div>
+            <div class="acc-title">O que isto significa para si e para a sua família</div>
+          </div>
+        </div>
+        <span class="acc-arrow">›</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-text">
+          <p>Se tem pais ou avós idosos, já sabe o que é gerir múltiplas consultas em locais diferentes, medicação complexa e urgências que podiam ter sido evitadas. Isto não é inevitável — é o resultado de um sistema que não foi adaptado ao tempo que vivemos.</p>
+          <p>As famílias portuguesas gastam em média 600 euros por ano do seu próprio bolso em saúde — não porque o SNS seja pago, mas porque o SNS não chega onde precisam. Consultas sem resposta, medicamentos com comparticipação insuficiente, transportes para o hospital.</p>
+          <p>Os cuidadores informais — na grande maioria mulheres da família — carregam um peso enorme que o sistema não reconhece nem apoia. Enquanto o SNS não criar respostas domiciliárias reais e acessíveis, será a família a absorver esse custo invisível.</p>
+        </div>
+        <div class="acc-btns">
+          <a class="acc-btn" href="#">Apoios para cuidadores →</a>
+          <a class="acc-btn" href="#">Como aceder a cuidados em casa →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACCORDION 3 -->
+    <div class="accordion" id="acc3">
+      <button class="acc-header" onclick="toggleAcc('acc3')">
+        <div class="acc-left">
+          <div class="acc-ico">💡</div>
+          <div>
+            <div class="acc-eyebrow">A pergunta difícil</div>
+            <div class="acc-title">Então o SNS vai conseguir responder?</div>
+          </div>
+        </div>
+        <span class="acc-arrow">›</span>
+      </button>
+      <div class="acc-body">
+        <div class="acc-text">
+          <p>A resposta honesta é: depende. O SNS tem profissionais dedicados e uma estrutura que muitos países gostariam de ter. Mas o modelo de funcionamento é, em grande parte, o de há 40 anos.</p>
+          <p>Há reformas em curso — os Sistemas Locais de Saúde, a digitalização dos registos clínicos, a dedicação plena dos médicos ao serviço público. São passos importantes. Mas nenhum deles responde diretamente ao grande desafio: transformar um sistema desenhado para tratar doenças agudas numa rede capaz de acompanhar vidas inteiras com doenças crónicas.</p>
+          <p>O que é certo, tanto nos dados portugueses como nas análises internacionais, é que continuar como está não é uma opção. O envelhecimento da população vai aumentar a pressão de forma irreversível. E as famílias com menos recursos serão sempre as primeiras a pagar o preço dessa inércia.</p>
+        </div>
+        <div class="acc-btns">
+          <a class="acc-btn" href="#">Que reformas são urgentes →</a>
+          <a class="acc-btn" href="#">Análise completa do SNS →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>
+    <strong>Fontes:</strong> INE — Estatísticas da Saúde 2024 · OPSS — Relatório Primavera 2022<br>
+    PLANAPP — Nota de Análise SNS/NHS · OCDE — Health at a Glance Europe 2024<br>
+    McKinsey Global Institute · The King's Fund · Nuffield Trust
+  </p>
+</footer>
+
+<script>
+  function toggleAcc(id) {
+    const el = document.getElementById(id);
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.accordion').forEach(a => a.classList.remove('open'));
+    if (!isOpen) el.classList.add('open');
+  }
+
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.body.scrollHeight - window.innerHeight;
+    bar.style.width = (scrolled / total * 100) + '%';
+  });
+</script>
+</body>
+</html>
